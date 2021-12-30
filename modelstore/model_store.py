@@ -57,7 +57,8 @@ class ModelStore:
     @classmethod
     def from_azure(cls, container_name: Optional[str] = None) -> "ModelStore":
         """Creates a ModelStore instance that stores models to an
-        Azure blob container. This assumes that the container already exists."""
+        Azure blob container. This assumes that the container
+        already exists."""
         if not AZURE_EXISTS:
             raise ModuleNotFoundError("azure-storage-blob is not installed!")
         return ModelStore(
@@ -71,7 +72,8 @@ class ModelStore:
         bucket_name: Optional[str] = None,
     ) -> "ModelStore":
         """Creates a ModelStore instance that stores models to a
-        Google Cloud Bucket. This assumes that the Cloud bucket already exists."""
+        Google Cloud Bucket. This assumes that the Cloud bucket
+        already exists."""
         if not GCLOUD_EXISTS:
             raise ModuleNotFoundError("google.cloud is not installed!")
         return ModelStore(
@@ -103,7 +105,7 @@ class ModelStore:
             raise Exception(
                 f"Failed to set up the {type(self.storage).__name__} storage."
             )
-        # Add attributes for ML librarie that exist in the current
+        # Add attributes for ML libraries that exist in the current
         # environment
         libraries = []
         for library, manager in iter_libraries(self.storage):
